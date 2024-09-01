@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use App\Enums\Role;
+
 return new class extends Migration
 {
     /**
@@ -19,7 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone')->nullable(); // Add phone number
             $table->string('address')->nullable(); // Add address field
-            $table->enum('role', ['admin', 'pharmacist', 'customer', 'doctor']); // Enum field for role
+            $table->string('role')->default(Role::class)->nullable();// Enum field for role
             $table->rememberToken();
             $table->timestamps();
         });
