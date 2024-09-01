@@ -20,6 +20,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone', 
+        'address', 
+        'role',
+        
     ];
 
     /**
@@ -43,5 +47,44 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+     /** Check if the user is an admin.
+     *
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    /**
+     * Check if the user is a pharmacist.
+     *
+     * @return bool
+     */
+    public function isPharmacist()
+    {
+        return $this->role === 'pharmacist';
+    }
+
+    /**
+     * Check if the user is a customer.
+     *
+     * @return bool
+     */
+    public function isCustomer()
+    {
+        return $this->role === 'customer';
+    }
+
+    /**
+     * Check if the user is a doctor.
+     *
+     * @return bool
+     */
+    public function isDoctor()
+    {
+        return $this->role === 'doctor';
     }
 }
