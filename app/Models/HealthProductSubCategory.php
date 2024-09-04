@@ -20,6 +20,6 @@ class HealthProductSubCategory extends Model
 
     public function healthProductCategory()
     {
-        return $this->nelongsTo(HealthProductCategory::class, 'health_product_category_id');
+        return $this->belongsTo(HealthProductCategory::class, 'health_product_category_id');
     }
 }
