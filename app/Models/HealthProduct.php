@@ -12,7 +12,7 @@ class HealthProduct extends Model
     protected $fillable = [
 
         'health_product_category_id ',
-        'health_product_subcategory_id',
+        'health_product_sub_category_id',
         'name',
         'description',
         'image_path',
