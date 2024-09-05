@@ -27,8 +27,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CategorySeeder::class);
         $this->call(SubCategorySeeder::class);
-        $this->call(HealthProductCategory::class);
-        $this->call(HealthProductSubCategory::class);
+        $this->call(HealthProductCategorySeeder::class);
+        $this->call(HealthProductSubCategorySeeder::class);
+        $this->call(HealthProductSeeder::class);
         
     }
 }
