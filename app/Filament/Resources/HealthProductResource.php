@@ -40,7 +40,7 @@ class HealthProductResource extends Resource
                 Forms\Components\TextInput::make('price')
                     ->required()
                     ->numeric()
-                    ->prefix('$'),
+                    ->prefix('₹'),
                 Forms\Components\TextInput::make('stock')
                     ->required()
                     ->numeric()
@@ -52,10 +52,10 @@ class HealthProductResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('health_product_category.name')
+                Tables\Columns\TextColumn::make('healthProductCategory.name')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('health_product_subcategory.name')
+                Tables\Columns\TextColumn::make('healthProductSubCategory.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
