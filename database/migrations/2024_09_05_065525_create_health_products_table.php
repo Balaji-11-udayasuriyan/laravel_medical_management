@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('health_products', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('health_product_category_id'); 
-            $table->unsignedBigInteger('health_product_subcategory_id');  
+            $table->unsignedBigInteger('health_product_sub_category_id');  
             $table->string('name');  
             $table->string('description')->nullable(); 
             $table->string('image_path')->nullable();
