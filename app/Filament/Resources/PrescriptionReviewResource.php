@@ -24,11 +24,9 @@ class PrescriptionReviewResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('prescription_id')
-                    ->required()
-                    ->numeric(),
+                    ->required(),
                 Forms\Components\Select::make('pharmacist_id')
-                    ->required()
-                    ->numeric(),
+                    ->required(),
                 Forms\Components\Textarea::make('review_notes')
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('approval_status')
