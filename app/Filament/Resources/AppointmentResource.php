@@ -26,18 +26,16 @@ class AppointmentResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('doctor_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('doctor_id')
+                    ->relationship('doctor','name'),
+                Forms\Components\Select::make('user_id')
+                    ->relationship('user','name'),
                 Forms\Components\DateTimePicker::make('appointment_time')
                     ->required(),
                 Forms\Components\Select::make('status')
                     ->options(AppointmentStatus::class)
                     ->default('pending'),
-                Forms\Components\TextInput::make('consultation_type')
+                Forms\Components\Select::make('consultation_type')
                     ->options(ConsultationType::class)
                     ->default('in-person'),
                 Forms\Components\Textarea::make('notes')
