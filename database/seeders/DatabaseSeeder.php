@@ -6,6 +6,8 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+use Spatie\Permission\Models\Role;
+
 use Illuminate\Support\Facades\Hash;
 
 
@@ -23,31 +25,34 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('admin'),
         ]);
-        $admin->assignRole('Admin');
+        // $admin->assignRole('Admin');
 
         // Create a Doctor user
-        $doctor = User::create([
+        // $doctor = User::create([
+        User::factory()->create([
             'name' => 'Doctor User',
             'email' => 'doctor@example.com',
             'password' => Hash::make('admin'),
         ]);
-        $doctor->assignRole('Doctor');
+        // $doctor->assignRole('Doctor');
 
         // Create a Pharmacist user
-        $pharmacist = User::create([
+        // $pharmacist = User::create([
+        User::factory()->create([
             'name' => 'Pharmacist User',
             'email' => 'pharmacist@example.com',
             'password' => Hash::make('admin'),
         ]);
-        $pharmacist->assignRole('Pharmacist');
+        // $pharmacist->assignRole('Pharmacist');
 
         // Create a Customer user
-        $customer = User::create([
+        // $customer = User::create([
+        User::factory()->create([
             'name' => 'Customer User',
             'email' => 'customer@example.com',
             'password' => Hash::make('admin'),
         ]);
-        $customer->assignRole('Customer');
+        // $customer->assignRole('Customer');
 
         //assign the roles
 
