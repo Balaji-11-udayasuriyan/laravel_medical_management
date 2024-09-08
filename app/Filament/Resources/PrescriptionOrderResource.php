@@ -19,6 +19,8 @@ class PrescriptionOrderResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Prescription Management';
+
     public static function form(Form $form): Form
     {
         return $form
