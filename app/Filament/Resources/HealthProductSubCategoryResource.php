@@ -19,6 +19,8 @@ class HealthProductSubCategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Health Products Management';
+
     public static function form(Form $form): Form
     {
         return $form
