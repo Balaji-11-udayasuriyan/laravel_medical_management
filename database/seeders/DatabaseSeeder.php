@@ -20,40 +20,6 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('admin'),
-        ]);
-        // $admin->assignRole('Admin');
-
-        // Create a Doctor user
-        // $doctor = User::create([
-        User::factory()->create([
-            'name' => 'Doctor User',
-            'email' => 'doctor@example.com',
-            'password' => Hash::make('admin'),
-        ]);
-        // $doctor->assignRole('Doctor');
-
-        // Create a Pharmacist user
-        // $pharmacist = User::create([
-        User::factory()->create([
-            'name' => 'Pharmacist User',
-            'email' => 'pharmacist@example.com',
-            'password' => Hash::make('admin'),
-        ]);
-        // $pharmacist->assignRole('Pharmacist');
-
-        // Create a Customer user
-        // $customer = User::create([
-        User::factory()->create([
-            'name' => 'Customer User',
-            'email' => 'customer@example.com',
-            'password' => Hash::make('admin'),
-        ]);
-        // $customer->assignRole('Customer');
-
         //assign the roles
 
         Role::create(['name' => 'Admin']);
@@ -61,6 +27,39 @@ class DatabaseSeeder extends Seeder
         Role::create(['name' => 'Pharmacist']);
         Role::create(['name' => 'Customer']);
 
+
+        $admin = User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('admin'),
+        ]);
+        $admin->assignRole('Admin');
+
+        // Create a Doctor user
+        $doctor = User::factory()->create([
+            'name' => 'Doctor User',
+            'email' => 'doctor@example.com',
+            'password' => Hash::make('admin'),
+        ]);
+        $doctor->assignRole('Doctor');
+
+        // Create a Pharmacist user
+        $pharmacist = User::factory()->create([
+            'name' => 'Pharmacist User',
+            'email' => 'pharmacist@example.com',
+            'password' => Hash::make('admin'),
+        ]);
+        $pharmacist->assignRole('Pharmacist');
+
+        // Create a Customer user
+        $customer = User::factory()->create([
+            'name' => 'Customer User',
+            'email' => 'customer@example.com',
+            'password' => Hash::make('admin'),
+        ]);
+        $customer->assignRole('Customer');
+
+        
 
         $this->call(CategorySeeder::class);
         $this->call(SubCategorySeeder::class);
