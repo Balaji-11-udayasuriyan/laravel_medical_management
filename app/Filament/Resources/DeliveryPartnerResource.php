@@ -19,6 +19,8 @@ class DeliveryPartnerResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Delivery & Shipping Management';
+
     public static function form(Form $form): Form
     {
         return $form
