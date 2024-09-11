@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum PaymentStatus:string
+enum OrderPaymentStatus:string
 {
 
     case Pending = 'pending';
@@ -16,12 +16,12 @@ enum PaymentStatus:string
 
     public static function getValues(): array
     {
-        return array_column(PaymentStatus::cases(), 'value');
+        return array_column(OrderPaymentStatus::cases(), 'value');
     }
 
     public static function getKeyValues():array
     {
-        return array_column(PaymentStatus::cases(), 'value','key');
+        return array_column(OrderPaymentStatus::cases(), 'value','key');
     }
 
 }

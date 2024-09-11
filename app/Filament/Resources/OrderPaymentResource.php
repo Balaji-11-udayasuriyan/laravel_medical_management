@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PaymentResource\Pages;
-use App\Filament\Resources\PaymentResource\RelationManagers;
-use App\Models\Payment;
+use App\Filament\Resources\OrderPaymentResource\Pages;
+use App\Filament\Resources\OrderPaymentResource\RelationManagers;
+use App\Models\OrderPayment;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,34 +13,29 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-use App\Enums\PaymentMethod;
-use App\Enums\PaymentStatus;
-
-class PaymentResource extends Resource
+class OrderPaymentResource extends Resource
 {
-    protected static ?string $model = Payment::class;
+    protected static ?string $model = OrderPayment::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationGroup = 'Order Management';
-    
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('order_id')
-                    ->relationship('order','name'),    
-                Forms\Components\Select::make('payment_method')
-                    ->options(PaymentMethod::UPI)
-                    ->default('UPI'),
+                    ->relationship('order','name'),
+                Forms\Components\TextInput::make('payment_method')
+                    ->relationship('order','name'),
                 Forms\Components\TextInput::make('transaction_id')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('amount')
                     ->required()
                     ->numeric(),
-                Forms\Components\Select::make('status')
-                    ->options(PaymentStatus::Pending)
+                Forms\Components\TextInput::make('status')
+                    ->required()
+                    ->maxLength(255)
                     ->default('pending'),
             ]);
     }
@@ -93,9 +88,9 @@ class PaymentResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPayments::route('/'),
-            'create' => Pages\CreatePayment::route('/create'),
-            'edit' => Pages\EditPayment::route('/{record}/edit'),
+            'index' => Pages\ListOrderPayments::route('/'),
+            'create' => Pages\CreateOrderPayment::route('/create'),
+            'edit' => Pages\EditOrderPayment::route('/{record}/edit'),
         ];
     }
 }

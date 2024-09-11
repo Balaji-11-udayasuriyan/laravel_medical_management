@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum PaymentMethod:string
+enum OrderPaymentMethod:string
 {
 
     case UPI = 'UPI';
@@ -16,12 +16,12 @@ enum PaymentMethod:string
 
     public static function getValues(): array
     {
-        return array_column(PaymentMethod::cases(), 'value');
+        return array_column(OrderPaymentMethod::cases(), 'value');
     }
 
     public static function getKeyValues():array
     {
-        return array_column(PaymentMethod::cases(), 'value','key');
+        return array_column(OrderPaymentMethod::cases(), 'value','key');
     }
 
 }

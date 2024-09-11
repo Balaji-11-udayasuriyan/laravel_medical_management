@@ -4,8 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-use App\Enums\PaymentMethod;
-use App\Enums\PaymentStatus;
+use App\Enums\OrderPaymentMethod;
+use App\Enums\OrderPaymentStatus;
 
 return new class extends Migration
 {
@@ -14,13 +14,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('order_payments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('order_id');
-            $table->string('payment_method')->default(PaymentMethod::UPI);
+            $table->string('payment_method')->default(OrderPaymentMethod::UPI);
             $table->string('transaction_id')->unique();
             $table->decimal('amount', 10, 2);
-            $table->string('status')->default(PaymentStatus::Pending);
+            $table->string('status')->default(OrderPaymentStatus::Pending);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('order_payments');
     }
 };
