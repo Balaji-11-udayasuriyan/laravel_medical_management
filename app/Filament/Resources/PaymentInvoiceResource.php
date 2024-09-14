@@ -36,7 +36,7 @@ class PaymentInvoiceResource extends Resource
                     ->required()
                     ->numeric(),
                 Forms\Components\Select::make('status')
-                    ->options(PaymentInvoiceStatus::class),
+                    ->options(PaymentInvoiceStatus::class),                   
             ]);
     }
 
