@@ -19,16 +19,16 @@ class TestAppointmentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Health Test Management';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('diagnostic_test_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('user_id')
+                    ->relationship('user','name'),
+                Forms\Components\Select::make('diagnostic_test_id')
+                    ->relationship('diagnosticTest','name'),
                 Forms\Components\DateTimePicker::make('appointment_date')
                     ->required(),
                 Forms\Components\TextInput::make('status')

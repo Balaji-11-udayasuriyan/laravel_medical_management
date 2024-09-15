@@ -13,22 +13,24 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
+use App\Enums\HomeSampleCollectionStatus;
+
 class HomeSampleCollectionResource extends Resource
 {
     protected static ?string $model = HomeSampleCollection::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Health Test Management';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('appointment_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('user_id')
+                    ->relationship('user','name'),
+                Forms\Components\Select::make('appointment_id')
+                    ->relationship('appointment','name'),
                 Forms\Components\Textarea::make('collection_address')
                     ->required()
                     ->columnSpanFull(),
@@ -36,9 +38,8 @@ class HomeSampleCollectionResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('scheduled_time')
                     ->required(),
-                Forms\Components\TextInput::make('status')
-                    ->required()
-                    ->maxLength(255)
+                Forms\Components\Select::make('status')
+                    ->options(HomeSampleCollectionStatus::scheduled)
                     ->default('scheduled'),
             ]);
     }
