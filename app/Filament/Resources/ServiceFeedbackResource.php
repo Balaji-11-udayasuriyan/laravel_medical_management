@@ -19,6 +19,8 @@ class ServiceFeedbackResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Review and Feedback Management';
+
     public static function form(Form $form): Form
     {
         return $form
