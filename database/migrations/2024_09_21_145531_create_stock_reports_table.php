@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use App\Enums\StockReportStatus;
+
 return new class extends Migration
 {
     /**
@@ -16,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('medicine_id');
             $table->integer('quantity');
             $table->integer('reorder_level');
-            $table->enum('status', ['in_stock', 'out_of_stock']);
+            $table->string('status')->default(StockReportStatus::in_stock);
             $table->timestamps();
         });
     }
